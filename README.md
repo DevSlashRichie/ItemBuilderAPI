@@ -4,7 +4,7 @@ API to build an ItemStack on CraftBukkit or Spigot.
   <a href="https://github.com/RicardormDev/ItemBuilderAPI/releases" target="_blank">
     <img alt="downloads" src="https://img.shields.io/github/v/release/RicardormDev/ItemBuilderAPI?color=56bcd3" />
   </a>
-  <a href="https://github.com/BiscuitDevelopment/SkyblockAddons/releases" target="_blank">
+  <a href="https://github.com/RicardormDev/ItemBuilderAPI/releases" target="_blank">
     <img alt="downloads" src="https://img.shields.io/github/downloads/RicardormDev/ItemBuilderAPI/total?color=56bcd3" />
   </a>
   <a href="https://github.com/RicardormDev/ItemBuilderAPI/blob/master/LICENSE" target="_blank">
