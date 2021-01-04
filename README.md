@@ -24,6 +24,16 @@ To use the ItemBuilder API:
 - Build with Maven or Gradle.
 - Add the following code to build.gradle or pom.xml
   
+## Start Using It
+```java
+ItemBuilder.newBuilder()
+	.setDisplayName("&9Hey there {name}")
+	.addLoreLine("&6This is a lore line!")
+	.arg("name", cPlayer.getPlayer().getName())
+	.setQuantity(1)
+.build();
+```
+  
 Build it into your project.
 ### Gradle
 ```gradle
