@@ -23,7 +23,7 @@ API to build an ItemStack on CraftBukkit or Spigot.
 To use the ItemBuilder API:
 - Build with Maven or Gradle.
 - Add the following code to build.gradle or pom.xml
-- For > 1.8 (and below) use version `v1.0`
+- For < 1.8 (and below) use version `v1.0`
 - For 1.9 < (and above) use version `v2.0`
   
 ## Start Using It
