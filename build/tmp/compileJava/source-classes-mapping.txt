@@ -1,0 +1,4 @@
+io/github/ricardormdev/itembuilder/ItemBuilder.java
+ io.github.ricardormdev.itembuilder.ItemBuilder
+ io.github.ricardormdev.itembuilder.ItemBuilder$1
+ io.github.ricardormdev.itembuilder.ItemBuilder$Enchant

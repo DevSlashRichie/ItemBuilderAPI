@@ -1,0 +1,61 @@
+{
+  "formatVersion": "1.1",
+  "component": {
+    "group": "io.github.ricardormdev",
+    "module": "itembuilder",
+    "version": "1.0.0",
+    "attributes": {
+      "org.gradle.status": "release"
+    }
+  },
+  "createdBy": {
+    "gradle": {
+      "version": "6.5.1",
+      "buildId": "ha5y5j2cj5gp5hijkydjookpym"
+    }
+  },
+  "variants": [
+    {
+      "name": "apiElements",
+      "attributes": {
+        "org.gradle.category": "library",
+        "org.gradle.dependency.bundling": "external",
+        "org.gradle.jvm.version": 8,
+        "org.gradle.libraryelements": "jar",
+        "org.gradle.usage": "java-api"
+      },
+      "files": [
+        {
+          "name": "itembuilder-1.0.0.jar",
+          "url": "itembuilder-1.0.0.jar",
+          "size": 6189,
+          "sha512": "cc481017eb5729a2b14acf15161f38f1ff5d83d68f9ecc145e6328e2ee8178f913f82b70292d1dc4153dcc0832e7fc4dc41d0099a7e5cce48a735ef6acf1d1ce",
+          "sha256": "cd6104a01f0d6704b46a379c142767129b4e8205307157b7d33d5604a483abc1",
+          "sha1": "609581e1f4e0433eb5100154775f82c195ee5ecc",
+          "md5": "2b21b8424cac40b4f0f93f137f3f8de0"
+        }
+      ]
+    },
+    {
+      "name": "runtimeElements",
+      "attributes": {
+        "org.gradle.category": "library",
+        "org.gradle.dependency.bundling": "external",
+        "org.gradle.jvm.version": 8,
+        "org.gradle.libraryelements": "jar",
+        "org.gradle.usage": "java-runtime"
+      },
+      "files": [
+        {
+          "name": "itembuilder-1.0.0.jar",
+          "url": "itembuilder-1.0.0.jar",
+          "size": 6189,
+          "sha512": "cc481017eb5729a2b14acf15161f38f1ff5d83d68f9ecc145e6328e2ee8178f913f82b70292d1dc4153dcc0832e7fc4dc41d0099a7e5cce48a735ef6acf1d1ce",
+          "sha256": "cd6104a01f0d6704b46a379c142767129b4e8205307157b7d33d5604a483abc1",
+          "sha1": "609581e1f4e0433eb5100154775f82c195ee5ecc",
+          "md5": "2b21b8424cac40b4f0f93f137f3f8de0"
+        }
+      ]
+    }
+  ]
+}

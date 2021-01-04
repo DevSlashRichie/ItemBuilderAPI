@@ -1,10 +1,10 @@
 plugins {
     id 'java-library'
-    id 'maven'
+    id 'maven-publish'
 }
 
 group 'io.github.ricardormdev'
-version '1.0.0'
+version '2.0'
 
 
 repositories {
@@ -20,6 +20,25 @@ repositories {
 }
 
 dependencies {
-    compileOnly "org.spigotmc:spigot-api:1.8.8-R0.1-SNAPSHOT"
+    compileOnly 'com.destroystokyo.paper:paper-api:1.16.4-R0.1-SNAPSHOT'
 }
 
+publishing {
+    repositories {
+        maven {
+            name = "GithubPackages"
+            url = uri("https://maven.pkg.github.com/RicardormDev/ItemBuilderAPI")
+            credentials {
+                username = project.findProperty("gpr.user") ?: System.getenv("USERNAME")
+                password = project.findProperty("gpr.key") ?: System.getenv("TOKEN")
+            }
+        }
+    }
+
+    publications {
+        gpr(MavenPublication) {
+            from(components.java)
+        }
+    }
+
+}

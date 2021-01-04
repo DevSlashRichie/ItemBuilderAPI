@@ -2,11 +2,11 @@ package io.github.ricardormdev.itembuilder;
 
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
+import org.bukkit.NamespacedKey;
 import org.bukkit.configuration.ConfigurationSection;
 import org.bukkit.enchantments.Enchantment;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
-import org.bukkit.material.MaterialData;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -31,19 +31,20 @@ public class ItemBuilder {
 
     private Material material;
     private int quantity;
-    private Byte data;
     private short damage;
+    private int modelData;
+
 
     private String displayName;
     private List<String> lore;
     private List<Enchant> enchants;
+    private boolean fixLore = false;
 
     /**
      * Private representation of an ItemBuilder
      */
     private ItemBuilder() {
         this.quantity = 1;
-        this.data = 0;
         this.damage = 0;
     }
 
@@ -80,6 +81,24 @@ public class ItemBuilder {
         if(lore != null && lore.length > 0)
             itemBuilder.setLore(Arrays.asList(lore));
         return itemBuilder.build();
+    }
+
+    /**
+     *
+     * Enable or Disable fix lore.
+     *
+     * FixLore is an attribute to organize the lore of the item
+     * to just 5 words per line. This is usesful to mantain an
+     * organized view of the lore of the item.
+     *
+     * The use of this attribute is intended to use only 1 lore line.
+     * The Builder will fix everything automatically.
+     *
+     * @param fixLore If should or not use it. (Default false).
+     */
+    public ItemBuilder setFixLore(boolean fixLore) {
+        this.fixLore = fixLore;
+        return this;
     }
 
     /**
@@ -160,19 +179,6 @@ public class ItemBuilder {
 
     /**
      *
-     * If you need data (example: the orange color of the wool, 35:1
-     *
-     *
-     * @param d The amount.
-     * @return The builder.
-     */
-    public ItemBuilder setData(int d) {
-        this.data = (byte) d;
-        return this;
-    }
-
-    /**
-     *
      * The name that the player will see when he takes the item.
      *
      * @param name The name / text you need
@@ -248,6 +254,18 @@ public class ItemBuilder {
 
     /**
      *
+     * Update the model data of the item
+     *
+     * @param modelData The integer ID of the modelData
+     * @return The builder
+     */
+    public ItemBuilder setModelData(int modelData) {
+        this.modelData = modelData;
+        return this;
+    }
+
+    /**
+     *
      * Finally build the item into an {@link ItemStack}.
      * This will also build any color at name and lore with color code '&'
      *
@@ -256,7 +274,7 @@ public class ItemBuilder {
      *
      */
     public ItemStack build() {
-        ItemStack item = new ItemStack(material, quantity, damage, data);
+        ItemStack item = new ItemStack(material, quantity, damage);
         ItemMeta meta = item.getItemMeta();
 
         meta.setDisplayName(ChatColor.translateAlternateColorCodes('&', displayName));
@@ -281,7 +299,7 @@ public class ItemBuilder {
      * The keys that are taken are the following:
      * displayName: String
      * item: String material (uppercase)
-     * data-value: byte (int)
+     * modelData: (int)
      * lore: ArrayString
      * amount: int
      * enchantments: ArrayString with the format enchantmentName:level -> SHARPNESS:5
@@ -313,14 +331,14 @@ public class ItemBuilder {
         setMaterial(material);
 
 
-        if(section.contains("data-value")) {
-            String ac = section.getString("data-value");
+        if(section.contains("modelData")) {
+            String ac = section.getString("modelData");
 
             if(!ac.matches("[0-9]+")) {
-                log.warning("Data value only accepts numbers. Error at configuration section : \"" + section.getName() + "\"");
+                log.warning("ModelData only accepts numbers. Error at configuration section : \"" + section.getName() + "\"");
             }
 
-            setData(Byte.parseByte(ac));
+            setModelData(Integer.parseInt(ac));
         }
 
         if(section.contains("lore")) {
@@ -353,7 +371,8 @@ public class ItemBuilder {
                     log.warning("Enchantment level only accepts numbers. Error at configuration section : \"" + section.getName() + "\"");
                 }
 
-                Enchantment enchantment = Enchantment.getByName(enc_data[0].toLowerCase());
+                Enchantment enchantment2 = Enchantment.getByName(enc_data[0].toLowerCase());
+                Enchantment enchantment = Enchantment.getByKey(NamespacedKey.minecraft(enc_data[0].toLowerCase()));
                 int level = Integer.parseInt(enc_data[1]);
 
                 if(enchantment != null) {
